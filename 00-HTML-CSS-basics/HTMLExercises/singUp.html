@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
 	<title>Sign up form</title>
 </head>
 <body>
@@ -23,7 +24,7 @@
         </p>
         <p>
 	  	<label for="email">E-mail:</label>
-          <input type="email" name="email" id="email" pattern="\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$" title="xxx@xxx.com" required>
+          <input type="email" name="email" id="email" title="xxx@xxx.com" required>
           <small id="emailHelp"></small>
         </p>
         <p>
@@ -47,7 +48,5 @@
         <input type="reset" value="Reset">
         <input type="submit"  id="submit" value="Submit">	
     </form>
-    <div id="returnForm" ></div>
-    <script src="js/validate.js"></script>
 </body>
 </html>

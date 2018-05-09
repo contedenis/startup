@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    padding: 10px;
+    margin: 0;
+}
+header{
+    text-align: center;
+    background-color: rgb(83, 65, 83);
+    color: oldlace;
+}
+#container{
+    margin: 10px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.image, .audio, .video{
+    display: inline-block;
+    width: 30%;
+}
+#idAudio, #idVideo{
+    height: 250px;
+    width: 96%;
+}
