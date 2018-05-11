@@ -1,7 +1,79 @@
-.container{
-    text-align: center;
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: flex;
 }
 
-#container{
-    text-align: center;
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.container {
+margin: 0 auto;
+width: 90%;
+text-align: center;
+}
+
+.column.full { width: 100%; }
+.column.half { width: 50%; }
+
+@media (min-width: 40rem) {
+  .column.third {
+      float: left;
+      padding-left: 1rem;
+      padding-right: 1rem;
+  }
+}
+  
+@media all and (min-width: 1025px) {
+    .column.third.head {
+        position: relative;
+        float: left;
+        width: 20%; 
+        height: auto;
+        padding: 5px;    
+    }
+    .column.third {
+        position: relative;
+        float: left;
+        width: 32%; 
+        height: auto;
+        padding: 5px;    
+    }
+  } 
+
+@media all and (max-width:425px) {
+    .display-1{
+      font-size:2rem;
+    }
+    .column.third {
+      position: relative;
+        float: left;
+        width: 90%;
+        height: auto;
+        padding: 4px;
+    }
+} 
+
+@media all and (max-width:1024px) and (min-width:426px) {
+    .display-1{
+      font-size: 3rem;
+    }
+    .column.third {
+      position: relative;
+        float: left;
+        width: 45%;
+        height: auto;
+        padding: 6px;
+    }
 }
