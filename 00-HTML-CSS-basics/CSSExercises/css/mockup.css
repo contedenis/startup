@@ -27,6 +27,22 @@ width: 90%;
     text-align: right;
 }
 
+.column.two-thirds { width: 66.7%;}
+.column.third { width: 33.3%; } 
+
+@media (min-width: 40rem) {
+.column.third {
+    float: left;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.column.two-thirds {
+    float: right;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+}
+
 @media all and (min-width: 1025px) {
     .column.third.head {
         position: relative;
@@ -35,20 +51,13 @@ width: 90%;
         height: auto;
         padding: 5px;    
     }
-    } 
-
-.column.two-thirds { width: 66.7%;}
-.column.third { width: 33.3%; } 
-
-@media (min-width: 40rem) {
-    .column.two-thirds {
-        float: right;
-        padding-left: 1rem;
-        padding-right: 1rem;
+    .column.third {
+        position: relative;
+        float: left;
+        width: 32%; 
+        height: auto;
+        padding: 5px;    
     }
-    }
-
-@media all and (min-width: 1025px) {
     .column.two-thirds {
         position: relative;
         float: right;
@@ -56,46 +65,6 @@ width: 90%;
         height: auto;
         padding: 5px;
         padding-right: 4.5rem;   
-    }
-    } 
-
-@media all and (max-width:425px) {
-    .column.two-thirds {
-        position: relative;
-        float: right;
-        width: auto;
-        height: auto;
-        padding: 4px;
-        padding-right: 4.5rem;   
-    }
-} 
-
-@media all and (max-width:1024px) and (min-width:426px) {
-    .column.two-thirds {
-        position: relative;
-        float: left;
-        width: auto;
-        height: auto;
-        padding: 6px;
-        padding-right: 4.5rem;   
-    }
-}
-
-@media (min-width: 40rem) {
-.column.third {
-    float: left;
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-}
-
-@media all and (min-width: 1025px) {
-    .column.third {
-        position: relative;
-        float: left;
-        width: 32%; 
-        height: auto;
-        padding: 5px;    
     }
   } 
 
@@ -107,6 +76,14 @@ width: 90%;
         height: auto;
         padding: 4px;
     }
+    .column.two-thirds {
+        position: relative;
+        float: right;
+        width: auto;
+        height: auto;
+        padding: 4px;
+        padding-right: 4.5rem;   
+    }
 } 
 
 @media all and (max-width:1024px) and (min-width:426px) {
@@ -116,6 +93,14 @@ width: 90%;
         width: 45%;
         height: auto;
         padding: 6px;
+    }
+    .column.two-thirds {
+        position: relative;
+        float: left;
+        width: auto;
+        height: auto;
+        padding: 6px;
+        padding-right: 4.5rem;   
     }
 }
 
