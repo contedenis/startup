@@ -1,38 +1,36 @@
-window.onload = function(){
-    document.getElementById('btn').addEventListener("click", tableGenerator);
+window.onload = function() {
+    document.getElementById('btn').addEventListener('click', tableGenerator);
 
-    function tableGenerator(){
-    
-    let clean = document.getElementById('table');
-    clean.innerHTML = '';
+    function tableGenerator() {
 
-    var body = document.getElementsByTagName("body")[0];
-    var table = document.getElementById("table");
-    tables = document.createElement("table");
-    bodyTable = document.createElement("tbody");
+    let body = document.getElementsByTagName('body')[0];
+    tables = document.createElement('table');
+    tables.setAttribute('class', 'table table-striped mt-4');
+    tables.setAttribute('align', 'center');
+    tables.setAttribute('id','table');
+
+    if(document.getElementById('table')) {
+        document.getElementById('table').remove();
+    }
     
     let matriz = [2];
     matriz[0] = document.getElementById('rows').value;
     matriz[1] = document.getElementById('columns').value;
 
     for (var i = 0; i < matriz[0]; i++) {
-        tr = document.createElement("tr");
+        tr = document.createElement('tr');
         for (var j = 0; j < matriz[1]; j++) {
 
-                td = document.createElement("td");
-                textTd = document.createTextNode("Row: "+i+". Column: "+j);
+                td = document.createElement('td');
+                textTd = document.createTextNode('Row: '+i+'. Column: '+j);
 
                 td.appendChild(textTd);
                 tr.appendChild(td);
 
         }
-
-            bodyTable.appendChild(tr);
+        tables.appendChild(tr);
+            
     }
-
-    table.appendChild(bodyTable);
-    table.appendChild(tables);
-    body.appendChild(table);
-    table.setAttribute("align", "center");
+    body.appendChild(tables);
 }
 }

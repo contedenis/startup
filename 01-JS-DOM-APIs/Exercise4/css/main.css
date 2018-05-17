@@ -1,13 +1,13 @@
-.container{
+.container {
     text-align: center;
 }
 
-.card{
+.card {
     width: 100%;
     text-align: left;
 }
 
-#repos{
+#repos {
     text-align: center;
 }
 
@@ -25,3 +25,8 @@
         width: 33.3%; 
     }
   }
+
+  #columnResult {
+    visibility: hidden;
+  }
+  

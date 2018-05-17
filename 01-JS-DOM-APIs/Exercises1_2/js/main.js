@@ -1,12 +1,7 @@
-window.onload = function(a)
-{
-    hidden();
-    document.getElementById("btn").addEventListener("click", function showAlert(){
-        alert("You push!");
-    });
-    
+window.onload = function(a) {
+    document.getElementById('btn').addEventListener('click', showAlert);
 };
 
-function hidden(){
-    document.getElementById("helloWorld").style.display = "none";
+function showAlert() {
+    alert('You push!');
 }

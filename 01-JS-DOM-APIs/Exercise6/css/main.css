@@ -20,8 +20,12 @@
 
 .container {
 margin: 0 auto;
-width: 90%;
+width: 90%; 
 text-align: center;
+}
+
+.table{
+  width: auto;
 }
 
 .column.full { width: 100%; }
