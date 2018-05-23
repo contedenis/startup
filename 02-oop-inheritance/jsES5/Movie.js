@@ -1,5 +1,5 @@
-class Movie extends EventEmitter{
-    constructor(title, year, duration){
+class Movie extends EventEmitter {
+    constructor(title, year, duration) {
         super();
         this.title = title;
         this.year = year;
@@ -7,27 +7,25 @@ class Movie extends EventEmitter{
         this.cast = [];
     }
 
-    play(){
+    play() {
         this.emit('play');
     }    
     
-    stop(){
+    stop() {
         this.emit('stop');
     }
 
-    resume(){
+    resume() {
         this.emit('resume');
     }
 
-    addCast(newCast){
-        if(Array.isArray(newCast)){
+    addCast(newCast) {
+        if (Array.isArray(newCast)) {
             newCast.forEach((value, index) => {
             this.cast.push(value);
-        }) 
-        }
-        else{
+            }) 
+        } else {
             this.cast.push(newCast);
         }
     }
-
 }

@@ -50,15 +50,13 @@ var EventEmitter = function () {
                 //Evaluate if it is associated with the same function
                 if (this.event[eventPlay].indexOf(callback) != -1) {
                     console.log('Its already exists');
+                } else {
+                    //If not, I assigned the new function
+                    this.event[eventPlay].push(callback);
                 }
-                //If not, I assigned the new function
-                else {
-                        this.event[eventPlay].push(callback);
-                    }
             } else {
                 //If not exist, i create the event as an array, and i assigned the function
-                this.event[eventPlay] = [];
-                this.event[eventPlay].push(callback);
+                this.event[eventPlay] = [callback];
             }
         }
 
@@ -67,23 +65,25 @@ var EventEmitter = function () {
     }, {
         key: 'off',
         value: function off(eventPlay, callback) {
-            //If the event exist and there are more than one
-            if (this.event[eventPlay].length > 1) {
-                //I find the function that corresponds to the event
-                var deleteEvent = this.event[eventPlay].indexOf(callback);
-                //I eliminated this function.
-                this.event[eventPlay].splice(deleteEvent, 1);
-            }
-            //If the event does not exist
-            else if (this.event[eventPlay].length) {
+            if (this.event[eventPlay]) {
+                //If the event exist and there are more than one
+                if (this.event[eventPlay].length > 0) {
+                    //I find the function that corresponds to the event
+                    var deleteEvent = this.event[eventPlay].indexOf(callback);
+                    //I eliminated this function.
+                    this.event[eventPlay].splice(deleteEvent, 1);
+                } else if (this.event[eventPlay] && this.event[eventPlay].length) {
+                    //If the event does not exist
                     console.log('Unknown event');
+                } else {
+                    //If the event exist but not more than one, i delete it
+                    var _deleteEvent = this.event[eventPlay].indexOf(callback);
+                    this.event[eventPlay].splice(_deleteEvent, 1);
+                    delete this.event[eventPlay];
                 }
-                //If the event exist but not more than one, i delete it
-                else {
-                        var _deleteEvent = this.event[eventPlay].indexOf(callback);
-                        this.event[eventPlay].splice(_deleteEvent, 1);
-                        delete this.event[eventPlay];
-                    }
+            } else {
+                console.log('The event you want to turn off is undefined.');
+            }
         }
 
         //Receive the event that want to emitt
@@ -91,20 +91,24 @@ var EventEmitter = function () {
     }, {
         key: 'emit',
         value: function emit(events) {
-            //Assign to the variable the arrangement of events
-            var eventsEmitted = this.event[events];
-            //If the variable is empty or has no elements
-            if (!eventsEmitted || !eventsEmitted.length) {
-                console.log('The event is empty');
-            }
-            //Execute the function with the event I want to emit
-            eventsEmitted.forEach(function (getEvents) {
-                if (!getEvents) {
-                    console.log('The callback does not exist');
-                } else {
-                    getEvents(events);
+            if (this.event[events]) {
+                //Assign to the variable the arrangement of events
+                var eventsEmitted = this.event[events];
+                //If the variable is empty or has no elements
+                if (!eventsEmitted || !eventsEmitted.length) {
+                    console.log('The event is empty');
                 }
-            });
+                //Execute the function with the event I want to emit
+                eventsEmitted.forEach(function (getEvents) {
+                    if (!getEvents) {
+                        console.log('The callback does not exist');
+                    } else {
+                        getEvents(events);
+                    }
+                });
+            } else {
+                console.log('The event you want to emmit is undefined.');
+            }
         }
     }]);
 
@@ -222,21 +226,21 @@ var Social = {
 };
 
 exports.default = Social;
-"use strict";
+'use strict';
 
-var _Actor = require("./Actor.js");
+var _Actor = require('./Actor.js');
 
 var _Actor2 = _interopRequireDefault(_Actor);
 
-var _Movie = require("./Movie.js");
+var _Movie = require('./Movie.js');
 
 var _Movie2 = _interopRequireDefault(_Movie);
 
-var _Logger = require("./Logger.js");
+var _Logger = require('./Logger.js');
 
 var _Logger2 = _interopRequireDefault(_Logger);
 
-var _Social = require("./Social.js");
+var _Social = require('./Social.js');
 
 var _Social2 = _interopRequireDefault(_Social);
 
@@ -244,10 +248,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Batman = new _Movie2.default('Batman', 1900, 32);
 var Log = new _Logger2.default();
-Batman.on("play", Log.log);
-Batman.on("play", Log.test);
-Batman.on("stop", Log.log);
-// Batman.off("play", Log.test);
+Batman.on('play', Log.log);
+Batman.on('stop', Log.log);
+Batman.off('play', Log.log);
+Batman.off('asd', Log.log);
 Batman.play();
 Batman.stop();
 console.log(Batman.event);

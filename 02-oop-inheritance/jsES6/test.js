@@ -1,14 +1,14 @@
-import Actor from "./Actor.js";
-import Movie from "./Movie.js";
-import Logger from "./Logger.js";
-import Social from "./Social.js";
+import Actor from './Actor.js';
+import Movie from './Movie.js';
+import Logger from './Logger.js';
+import Social from './Social.js';
 
 let Batman = new Movie('Batman', 1900, 32);
 let Log = new Logger();
-Batman.on("play", Log.log);
-Batman.on("play", Log.test);
-Batman.on("stop", Log.log);
-// Batman.off("play", Log.test);
+Batman.on('play', Log.log);
+Batman.on('stop', Log.log);
+Batman.off('play', Log.log);
+Batman.off('asd', Log.log);
 Batman.play();
 Batman.stop();
 console.log(Batman.event);
