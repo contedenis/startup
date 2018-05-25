@@ -19,11 +19,11 @@ const handleOnEditMovie = event => {
     event.preventDefault();
     let form = event.target,
         movie = {
-            title: (form.title.value) ? form.title.value : App.defaultProps.title,
-            year: (form.year.value) ? form.year.value : App.defaultProps.year,
-            duration: (form.duration.value) ? form.duration.value : App.defaultProps.duration
+            title: form.title.value,
+            year: form.year.value,
+            duration: form.duration.value
         }
-
+        
     return {
         type: "EDIT_MOVIE",
         movie
@@ -32,14 +32,13 @@ const handleOnEditMovie = event => {
 
 const handleChange = event => {
     let eventValue = [event.target.name, event.target.value]
-
     return {
         type: "ON_CHANGE",
         eventValue
     };
 };
 
-const handleOnShowMovie = event => {   
+const handleOnShowMovie = event => {  
     event.preventDefault();
     let form = event.target.value.split(',');
         const movie = [{

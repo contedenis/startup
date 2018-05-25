@@ -6,6 +6,7 @@ import MoviesList from './MoviesList';
 import store from '../store';
 import { handleOnAddMovies, handleOnEditMovie, handleChange, handleOnShowMovie, handleOnDeleteMovies, resetMovies, resetEditMovie } from '../actionCreators'
 
+
 class App extends Component {
     constructor(...props) {
         super(...props);
@@ -22,41 +23,36 @@ class App extends Component {
             })   
         })
 
-        this.handleOnAddMovies = this.handleOnAddMovies.bind(this);
-        this.handleOnShowMovie = this.handleOnShowMovie.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleOnAddMovies = this.handleOnAddMovies.bind(this);
+        this.handleOnEditMovie = this.handleOnEditMovie.bind(this);
+        this.handleOnShowMovie = this.handleOnShowMovie.bind(this);
         this.handleOnDeleteMovies = this.handleOnDeleteMovies.bind(this);
         this.resetMovies = this.resetMovies.bind(this);
         this.resetEditMovie = this.resetEditMovie.bind(this);
 
     }
 
-    handleOnAddMovies(event) {   
-        if (this.state.editMovie.length) {
-            store.dispatch(handleOnEditMovie(event));
-            this.resetEditMovie();
-        } else {
-            store.dispatch(handleOnAddMovies(event));
-        }    
-    }
-
     handleChange(event) {
         store.dispatch(handleChange(event));
-    }
-
+    }    
+    handleOnAddMovies(event) {   
+        store.dispatch(handleOnAddMovies(event));  
+    }  
     handleOnShowMovie(event) {
         store.dispatch(handleOnShowMovie(event));
-    }
-
+    }    
+    handleOnEditMovie(event) {
+        store.dispatch(handleOnEditMovie(event));
+        store.dispatch(resetEditMovie());
+    }    
     handleOnDeleteMovies(event) {
         store.dispatch(handleOnDeleteMovies(event))
-        this.resetEditMovie();
-    }
-
+        store.dispatch(resetEditMovie());
+    }    
     resetMovies() {
         store.dispatch(resetMovies());
-    }
-
+    }    
     resetEditMovie() {
         store.dispatch(resetEditMovie());
     }
@@ -66,9 +62,10 @@ class App extends Component {
             <div className="container">
                 <Header />
                 <MoviesAddForm className="row clearfix"
-                    onAddMovies={this.handleOnAddMovies} 
-                    editMovies={this.state.editMovie} 
-                    onEditMovies={this.handleChange}
+                    onAddMovies={this.handleOnAddMovies}
+                    onEditMovies={this.handleOnEditMovie} 
+                    editMovie={this.state.editMovie} 
+                    handleChange={this.handleChange}
                     resetMovies={this.resetMovies}
                     resetEditMovie={this.resetEditMovie}
                 />

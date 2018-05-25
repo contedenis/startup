@@ -4,12 +4,12 @@ import EditFormMovie from './EditFormMovie';
 
 const MoviesAddForm = (props) => (
     <div className="col-lg-6 column halft">
-        {props.editMovies.length ? (
-            <form className="form" onSubmit={props.onAddMovies} >
+        {props.editMovie.length ? (
+            <form className="form" onSubmit={props.onEditMovies} >
                 {
-                    props.editMovies.map((movie, key) => (
+                    props.editMovie.map((movie, key) => (
                         <EditFormMovie  
-                            onEditMovies={props.onEditMovies}
+                            handleChange={props.handleChange}
                             key={key}
                             title={movie.title}
                             year={movie.year}

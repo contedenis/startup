@@ -23,7 +23,7 @@ const reducer = (state, action) => {
             movie: state.movies.splice(state.editMovie[0].key, 1, action.movie)
         }
     } else if (action.type === "ON_CHANGE") {
-        const change = state.editMovie
+        let change = state.editMovie
         switch (action.eventValue[0]) {
             case 'title':
                 change[0].title = action.eventValue[1]
@@ -43,7 +43,7 @@ const reducer = (state, action) => {
                     ...state,
                     editMovie: change
                 }
-        }
+        }       
     } else if (action.type === "RESET_MOVIES") {
         return {
             ...state,
@@ -59,26 +59,3 @@ const reducer = (state, action) => {
 }
 
 export default createStore(reducer, { movies: [], editMovie: [] });
-
-        // if (action.eventValue[0] === 'title') {
-        //     let change = state.editMovie
-        //     change[0].title = action.eventValue[1]
-        //     return {
-        //         ...state,
-        //         editMovie: change
-        //     }
-        // } else if (action.eventValue[0] === 'year') {
-        //     let change = state.editMovie
-        //     change[0].year = action.eventValue[1]
-        //     return {
-        //         ...state,
-        //         editMovie: change
-        //     }
-        // } else if (action.eventValue[0] === 'duration') {
-        //     let change = state.editMovie
-        //     change[0].duration = action.eventValue[1]
-        //     return {
-        //         ...state,
-        //         editMovie: change
-        //     }
-        // }
