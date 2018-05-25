@@ -23,7 +23,6 @@ const handleOnEditMovie = event => {
             year: form.year.value,
             duration: form.duration.value
         }
-        
     return {
         type: "EDIT_MOVIE",
         movie

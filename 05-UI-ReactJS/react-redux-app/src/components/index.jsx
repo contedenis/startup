@@ -1,94 +1,66 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import Header from './Header'
 import MoviesAddForm from './MoviesAddForm';
 import MoviesList from './MoviesList';
-import store from '../store';
 import { handleOnAddMovies, handleOnEditMovie, handleChange, handleOnShowMovie, handleOnDeleteMovies, resetMovies, resetEditMovie } from '../actionCreators'
+import { connect } from 'react-redux';
 
+ const App = (props) => {   
 
-class App extends Component {
-    constructor(...props) {
-        super(...props);
+    return (
+        <div className="container">
+            <Header />
+            <MoviesAddForm className="row clearfix"
+                onAddMovies={props.handleOnAddMovies}
+                onEditMovies={props.handleOnEditMovie} 
+                editMovie={props.editMovie} 
+                handleChange={props.handleChange}
+                resetMovies={props.resetMovies}
+                resetEditMovie={props.resetEditMovie}
+            />           
+            <MoviesList 
+                movies={props.movies} 
+                onShowMovie={props.handleOnShowMovie} 
+                onDeleteMovies={props.handleOnDeleteMovies}
+            />
+        </div>
+    )
 
-        this.state = {
-            movies: [],
-            editMovie: []
-        };
+}
 
-        store.subscribe(() => {
-            this.setState({
-                movies: store.getState().movies,
-                editMovie: store.getState().editMovie
-            })   
-        })
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleOnAddMovies = this.handleOnAddMovies.bind(this);
-        this.handleOnEditMovie = this.handleOnEditMovie.bind(this);
-        this.handleOnShowMovie = this.handleOnShowMovie.bind(this);
-        this.handleOnDeleteMovies = this.handleOnDeleteMovies.bind(this);
-        this.resetMovies = this.resetMovies.bind(this);
-        this.resetEditMovie = this.resetEditMovie.bind(this);
-
-    }
-
-    handleChange(event) {
-        store.dispatch(handleChange(event));
-    }    
-    handleOnAddMovies(event) {   
-        store.dispatch(handleOnAddMovies(event));  
-    }  
-    handleOnShowMovie(event) {
-        store.dispatch(handleOnShowMovie(event));
-    }    
-    handleOnEditMovie(event) {
-        store.dispatch(handleOnEditMovie(event));
-        store.dispatch(resetEditMovie());
-    }    
-    handleOnDeleteMovies(event) {
-        store.dispatch(handleOnDeleteMovies(event))
-        store.dispatch(resetEditMovie());
-    }    
-    resetMovies() {
-        store.dispatch(resetMovies());
-    }    
-    resetEditMovie() {
-        store.dispatch(resetEditMovie());
-    }
-
-    render() {
-        return (
-            <div className="container">
-                <Header />
-                <MoviesAddForm className="row clearfix"
-                    onAddMovies={this.handleOnAddMovies}
-                    onEditMovies={this.handleOnEditMovie} 
-                    editMovie={this.state.editMovie} 
-                    handleChange={this.handleChange}
-                    resetMovies={this.resetMovies}
-                    resetEditMovie={this.resetEditMovie}
-                />
-                <MoviesList 
-                    movies={this.state.movies} 
-                    onShowMovie={this.handleOnShowMovie} 
-                    onDeleteMovies={this.handleOnDeleteMovies}
-                />
-            </div>
-        )
+const mapStateToProps = (state) => {
+    return {
+        movies: state.movies,
+        editMovie: state.editMovie
     }
 }
 
-App.propTypes = {
-    title: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    duration: PropTypes.number.isRequired
-};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleChange(event) {
+            dispatch(handleChange(event));
+        },    
+        handleOnAddMovies(event) {   
+            dispatch(handleOnAddMovies(event));  
+        },    
+        handleOnShowMovie(event) {
+            dispatch(handleOnShowMovie(event));
+        },    
+        handleOnEditMovie(event) {
+            dispatch(handleOnEditMovie(event));
+            dispatch(resetEditMovie());
+        },    
+        handleOnDeleteMovies(event) {
+            dispatch(handleOnDeleteMovies(event))
+            dispatch(resetEditMovie());
+        },    
+        resetMovies() {
+            dispatch(resetMovies());
+        },    
+        resetEditMovie() {
+            dispatch(resetEditMovie());
+        }
+    }
+}
 
-App.defaultProps = {
-    title: 'Movie default',
-    year: 0,
-    duration: 0
-};
-
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

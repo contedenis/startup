@@ -1,61 +1,74 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 
-const reducer = (state, action) => {
+const movies = (state = [], action) => {
 
     if (action.type === 'ADD_TO_MOVIE') {
-        return {
-            ...state,
-            movies: state.movies.concat([action.movie])
-        };
+
+        return state.concat([action.movie]);
+
     } else if (action.type === 'REMOVE_FROM_MOVIES') {
-        return {
-            ...state,
-            movies: state.movies.filter((movie, index) => index != action.movie[0].key)  
-        }
-    } else if (action.type === "SHOW_MOVIE_TO_EDIT") {
-        return {
-            ...state,
-            editMovie: action.movie
-        }
+
+        return state.filter((movie, index) => index !== Number(action.movie[0].key))
+
     } else if (action.type === "EDIT_MOVIE") {
-        return {
-            ...state,
-            movie: state.movies.splice(state.editMovie[0].key, 1, action.movie)
-        }
-    } else if (action.type === "ON_CHANGE") {
-        let change = state.editMovie
-        switch (action.eventValue[0]) {
-            case 'title':
-                change[0].title = action.eventValue[1]
-                return {
-                    ...state,
-                    editMovie: change
-                }
-            case 'year':
-                change[0].year = action.eventValue[1]
-                return {
-                    ...state,
-                    editMovie: change
-                }
-            case 'duration':
-                change[0].duration = action.eventValue[1]
-                return {
-                    ...state,
-                    editMovie: change
-                }
-        }       
+
+        let change = Object.assign([{}], state);
+        change.splice(state[0].key, 1, action.movie) 
+
+        return change 
+
     } else if (action.type === "RESET_MOVIES") {
-        return {
-            ...state,
-            movies: []
+
+        return []
+
+    } 
+
+    return state;
+}
+
+const editMovie = (state = [], action) => {
+
+    if (action.type === "SHOW_MOVIE_TO_EDIT") { 
+
+        return action.movie
+
+    } else if (action.type === "ON_CHANGE") {
+
+        if (action.eventValue[0] === 'title') {
+
+            let change = Object.assign([], state);
+            change[0].title = action.eventValue[1]
+
+            return change
+
+        } else if (action.eventValue[0] === 'year') {
+
+            let change = Object.assign([], state);
+            change[0].year = action.eventValue[1]
+
+            return change
+
+        } else if (action.eventValue[0] === 'duration') {
+
+            let change = Object.assign([], state);
+            change[0].duration = action.eventValue[1]
+
+            return change
+
         }
     } else if (action.type === "RESET_EDIT_MOVIE") {
-        return {
-            ...state,
-            editMovie: []
-        }
+
+        return []
+
     }
     return state;
 }
 
-export default createStore(reducer, { movies: [], editMovie: [] });
+const logger = store => next => action => {
+    console.log('dispatching', action);
+    let result = next(action);
+    console.log('next state', store.getState());
+    return result;
+}
+
+export default createStore(combineReducers({ movies, editMovie }), applyMiddleware(logger));
