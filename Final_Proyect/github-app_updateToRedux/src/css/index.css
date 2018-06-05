@@ -1,0 +1,325 @@
+*, *:before, *:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	background-color: aliceblue;
+}
+
+img {
+	width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+html {
+  font-size: 1rem;
+}
+
+.container {
+	margin: 0 auto;
+	width: 90%;
+	height: 100%;
+	text-align: center;
+}
+
+.navbar {
+	margin-bottom: 0px;
+}
+
+.navbar a {
+	color: white;
+	text-decoration: none;
+}
+
+.navbar a:hover {
+	background-color: lightgray;
+	color: black;
+	z-index:1;
+	transition: 0.5s;
+	border-radius: 15%;
+} 
+
+.jumbotron {
+	text-align: left;
+}
+
+.thumbnail img {
+	width: 100px;
+	height: 100px;
+	margin-top: 20px;
+}
+
+.show-repositories {
+	margin-top: 20px;
+	width: 100%;
+}
+
+.well {
+	margin-top: 20px;
+	background-color: aliceblue;
+	min-height: 200px;
+	width: 100%;
+}
+
+.well img {
+	width: 50%;
+	height: 50%;
+}
+
+.show_repositorie_details {
+	margin: 0 auto;
+	margin-top: 50px;
+	width: 70%;
+}
+
+.well_details {
+	overflow: hidden;
+}
+
+.well_image_details {
+	width: 33.3%; 
+}
+
+.well_image_details img {
+	width: 100%;
+}
+
+.well_body_details {
+	width: 66.7%;
+	text-align: left;
+}
+
+.repositories {
+	margin: 0 auto;
+	margin-top: 20px;
+	text-align: center;
+	width: 50%;
+}
+
+.btn-repositories {
+	margin-top: 20px;
+	margin-left: 5px;
+}
+
+.column.half.no_float {
+	float: none;
+	margin: 0 auto;
+}
+
+.table.table-fixed tbody {
+	height:400px;
+	overflow-y:auto;
+	width: 100%;
+}
+
+.table.table-fixed tbody, tr {
+	display:inline-block;
+	width: 100%
+}
+
+.table.table-fixed.userRepos {
+	margin-top: 20px;
+}
+.table.table-fixed tbody td {
+	float:left;
+	width: 50%;
+}
+
+.table.table-fixed img {
+ 	width: 100px;
+}
+
+.footer {
+	position:fixed;
+	left:5.5%;
+	bottom: 0;
+	margin-bottom: 0;
+	width: 89%;
+	background-color: #181617;
+	color: #d9d9d9;
+}
+
+.gif {
+	background-color: aliceblue;
+	margin: 350px auto;
+	width: 200px;
+}
+
+@media all and (max-width:1024px) and (min-width:650px) {
+	.well_image_details {
+		text-align: center;
+		width: 100%; 
+	}
+
+	.well_image_details img {
+		width: 50%;
+	}
+
+	.well_body_details {
+		margin-top: 20px;
+		width: 100%;
+		text-align: center;
+	}
+	.table.table-fixed.userRepos {
+		margin-top: 20px;
+	}
+	.table.table-fixed.userRepos tbody td {
+		float: left;
+		width: 100%;
+	}
+}
+
+@media all and (max-width:650px) {
+	.well_image_details {
+		text-align: center;
+		width: 100%; 
+	}
+
+	.well_image_details img {
+		min-width: 100px;
+		min-height: auto;
+	}
+
+	.well_body_details {
+		margin-top: 20px;
+		width: 100%;
+		text-align: center;
+	}
+	h2 {
+		font-size: 1.2em;
+	}
+	body {
+		font-size: 0.8em;
+		word-wrap: break-word;
+	}
+	.table.table-fixed.userRepos {
+		margin-top: 20px;
+	}
+	.table.table-fixed.userRepos tbody td {
+		float: left;
+		width: 100%;
+	}
+} 
+
+@media (min-width: 40rem) {
+	.column {
+		float: left;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	.column.half {
+		width: 50%; 
+	}
+	.column.third { 
+		width: 33.3%; 
+	}
+
+	.column.two-thirds { 
+		width: 66.7%; 
+	}
+}
+
+@media all and (min-width: 1025px) {
+	.column.half {
+		position: relative;
+		float: left;
+		width: 50%; 
+		height: auto;
+		padding: 5px;    
+	}
+	.column.third { 
+		width: 33%; 
+		float: left;
+		height: auto;
+		padding: 4px;
+	}
+
+	.column.two-thirds { 
+		width: 66.7%; 
+	}
+	.well {
+		min-height: 240px;
+	}
+	.well img {
+		width: 50%;
+	}
+	.thumbnail {
+		height: 200px;
+	}
+	.well_image_details img {
+		min-width: 150px;
+		min-height: auto;
+	}
+} 
+
+@media all and (max-width:1024px) and (min-width:650px) {
+	.column.half {
+		position: relative;
+		float: left;
+		width: 100%;
+		height: auto;
+		padding: 4px;
+		text-align: center;
+	}
+	.column.third {
+		position: relative;
+		float: left;
+		width: 33%;
+		height: auto;
+		padding: 6px;
+	}
+	.column.two-thirds { 
+		width: 66%; 
+	}
+	.show-repositories .column.half {
+		width: 100%; 
+	}
+	.well {
+		overflow: hidden;
+	}
+	.thumbnail {
+		height: 185px;
+	}
+}
+
+@media all and (max-width:650px) {
+	.column.half {
+		position: relative;
+		float: left;
+		width: 100%;
+		height: auto;
+		padding: 4px;
+		text-align: center;
+	}
+	.column.third { 
+		width: 100%; 
+		float: left;
+		height: auto;
+		padding: 4px;
+	}
+	.column.two-thirds { 
+		width: 100%; 
+	}
+	.well {
+		overflow: hidden;
+	}
+	.well img {
+		width: 20%;
+	}
+	h4 {
+		font-size: 1.2em;
+	}
+	body {
+		font-size: 0.8em;
+		word-wrap: break-word;
+	}
+} 
