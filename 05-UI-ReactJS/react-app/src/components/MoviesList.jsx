@@ -16,7 +16,11 @@ const MoviesList = (props) => (
                 {
                     props.movies.map((movie, key) => (
                         <Movies
-                            value={[key,movie.title,movie.year,movie.duration]}
+                            value={[key,
+                                    movie.title,
+                                    movie.year,
+                                    movie.duration
+                                   ]}
                             onEditMovies={props.onEditMovies}
                             onDeleteMovies={props.onDeleteMovies}
                             key={key}
