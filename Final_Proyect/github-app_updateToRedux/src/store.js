@@ -14,7 +14,7 @@ const initialState = {
 }
 
 const reducer = (state, action) => {
-    switch(action.type) {
+    switch (action.type) {
 
         case 'TRENDING_REPOSITORIES':
             return {
@@ -31,11 +31,11 @@ const reducer = (state, action) => {
             }
 
         case 'REPOSITORIES_BY_LANGUAGE':
-        return {
-            ...state,
-            repoByLanguage: action.repositories,
-            isFetching: false
-        }
+            return {
+                ...state,
+                repoByLanguage: action.repositories,
+                isFetching: false
+            }
 
         case 'USERS_LIST':
             return {
@@ -104,7 +104,7 @@ const reducer = (state, action) => {
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store = createStore(
+const store = createStore (
   reducer,
   initialState,
   composeEnhancers(

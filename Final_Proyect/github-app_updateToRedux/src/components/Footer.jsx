@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {Panel } from 'react-bootstrap'
 
 const Footers = () => (
@@ -12,4 +12,4 @@ const Footers = () => (
     </Panel>
 )
 
-export default Footers;
+export default Footers

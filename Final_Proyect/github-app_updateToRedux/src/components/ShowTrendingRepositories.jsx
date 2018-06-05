@@ -21,8 +21,8 @@ class ShowTrendingRepositories extends React.Component {
                 </p> 
             )
         }
+        
         const trendRepositories = this.props.trendingRepositories
-        console.log(trendRepositories)
         
         return (
             <div class="show-repositories">

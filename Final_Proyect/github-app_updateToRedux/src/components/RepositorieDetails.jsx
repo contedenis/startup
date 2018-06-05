@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 
 
 class RepositorieDetails extends React.Component {
-    
+
     componentDidMount() {
         this.props.handleOnRepositoreDetails(this.props.match.params.username, this.props.match.params.reponame);
     }
@@ -19,9 +19,9 @@ class RepositorieDetails extends React.Component {
     }
 
     componentWillUnmount() {
-		this.props.handleCleanRepoDetails()
-	}
-
+        this.props.handleCleanRepoDetails()
+    }
+    
     render() {
 
         if (this.props.isFetching === true) {
@@ -101,5 +101,7 @@ const mapDispatchToProps = dispatch => {
         }
     }
 }
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(RepositorieDetails);

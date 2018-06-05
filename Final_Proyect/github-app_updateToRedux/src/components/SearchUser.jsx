@@ -42,7 +42,7 @@ class SearchUser extends React.Component {
 
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
 	return {
 		username: state.username
 	}

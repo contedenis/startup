@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {Navbar, Nav, NavItem } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
@@ -29,4 +29,4 @@ const NavBar = () => (
 	</Navbar>   
 )
 
-export default NavBar;
+export default NavBar

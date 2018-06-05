@@ -15,7 +15,7 @@ class UserDetails extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.match.params.username !== this.props.match.params.username) {
-            this.props.handleUserDetails(this.props.match.params.username);
+            this.props.handleUserDetails(this.props.match.params.username)
         }
     }
 
@@ -64,7 +64,7 @@ class UserDetails extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
 	return {
 		userDetails: state.userDetails
 	}

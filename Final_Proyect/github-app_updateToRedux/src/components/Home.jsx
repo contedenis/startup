@@ -1,5 +1,5 @@
 import React from 'react'
-import {Jumbotron, Button, Grid, Row, Thumbnail } from 'react-bootstrap'
+import {Jumbotron, Grid, Row, Thumbnail } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import github from '../images/exploring_GitHub.png'
 import git_repositories from '../images/git_repositories.png'
@@ -51,4 +51,4 @@ const Home = () => (
     </div>
 )
 
-export default Home;
+export default Home

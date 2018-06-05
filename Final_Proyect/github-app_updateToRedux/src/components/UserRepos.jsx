@@ -1,6 +1,6 @@
-import React from 'react';
-import { Table } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Table } from 'react-bootstrap'
+import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
 import { handleUserRepos } from '../actionCreators'
 
@@ -17,7 +17,7 @@ class UserRepos extends React.Component {
 
 		return (
 			<div>
-				<Table className="table table-fixed">
+				<Table className="table table-fixed userRepos">
 					<tbody>
 						{
 							userRepos.map((repo) => (
@@ -37,7 +37,7 @@ class UserRepos extends React.Component {
 	}
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
 	return {
 		userRepos: state.userRepos
 	}

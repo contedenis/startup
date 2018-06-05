@@ -125,6 +125,9 @@ html {
 	width: 100%
 }
 
+.table.table-fixed.userRepos {
+	margin-top: 20px;
+}
 .table.table-fixed tbody td {
 	float:left;
 	width: 50%;
@@ -165,7 +168,10 @@ html {
 		width: 100%;
 		text-align: center;
 	}
-	.table.table-fixed tbody td {
+	.table.table-fixed.userRepos {
+		margin-top: 20px;
+	}
+	.table.table-fixed.userRepos tbody td {
 		float: left;
 		width: 100%;
 	}
@@ -194,7 +200,10 @@ html {
 		font-size: 0.8em;
 		word-wrap: break-word;
 	}
-	.table.table-fixed tbody td {
+	.table.table-fixed.userRepos {
+		margin-top: 20px;
+	}
+	.table.table-fixed.userRepos tbody td {
 		float: left;
 		width: 100%;
 	}

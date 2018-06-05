@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from "react-router-dom"
 import { Table } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import SearchUser from './SearchUser'
@@ -42,7 +42,7 @@ class Users extends React.Component {
                                     usersToShow.map((user) => (
                                         <tr>
                                             <td>
-                                                <img src={user.avatar_url} alt="picture user"/>
+                                                <img src={user.avatar_url} alt="user"/>
                                             </td>
                                             <td>
                                                 <Link to={`/user-details/${user.login}`}>
@@ -61,7 +61,7 @@ class Users extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
         isFetching: state.isFetching,
         usersList: state.usersList
