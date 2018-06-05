@@ -1,0 +1,6 @@
+{
+    "movies": [
+        {"title": "React desde cero", "year": 1900, "duration": 90},
+        {"title": "React desde cero", "year": 1908, "duration": 80}
+    ]
+}
